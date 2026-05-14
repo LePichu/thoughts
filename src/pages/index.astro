@@ -1,17 +1,37 @@
 ---
+import { getCollection } from "astro:content"
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Feed from "../components/Feed"
+import Nav from "../components/Nav"
+import type { ThoughtMeta } from "../components/Feed"
 
+const thoughts = (await getCollection("thoughts"))
+	.sort((a, b) => {
+		// Parse DD-MM-YYYY for sorting
+		const [ad, am, ay] = a.data.date.split("-").map(Number)
+		const [bd, bm, by] = b.data.date.split("-").map(Number)
+		return (
+			new Date(by, bm - 1, bd).getTime() -
+			new Date(ay, am - 1, ad).getTime()
+		)
+	})
+	.map(
+		(t) =>
+			({
+				id: t.id,
+				title: t.data.title,
+				description: t.data.description,
+				reading_time: t.data.reading_time,
+				date: t.data.date,
+			}) satisfies ThoughtMeta,
+	)
+
+console.log("MAPPED:", thoughts)
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="thoughts">
+	<div class="mb-4">
+		<Nav />
+	</div>
+	<Feed {thoughts} client:only="solid-js" />
+</BaseLayout>

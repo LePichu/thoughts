@@ -1,0 +1,7 @@
+{
+	"unstable": ["fmt-component"],
+	"fmt": {
+		"useTabs": true,
+		"semiColons": false
+	}
+}

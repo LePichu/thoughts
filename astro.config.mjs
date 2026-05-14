@@ -1,5 +1,20 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+
+import solidJs from "@astrojs/solid-js";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+    site: "https://lepichus-thoughts.pages.dev",
+    integrations: [solidJs()],
+    vite: {
+        plugins: [tailwindcss()],
+    },
+    markdown: {
+        shikiConfig: {
+            theme: "gruvbox-dark-hard",
+            wrap: false,
+        },
+    },
+});

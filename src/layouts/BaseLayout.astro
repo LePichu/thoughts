@@ -1,0 +1,30 @@
+---
+import Meta from "../components/Meta.astro";
+
+interface Props {
+    title?: string;
+    description?: string;
+    image?: string;
+    type?: "website" | "article";
+    date?: string;
+}
+
+const { title, description, image, type, date } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="/src/styles/global.css" />
+        <Meta {title} {description} {type} {date} />
+    </head>
+    <body class="bg-white text-neutral-900 min-h-screen">
+        <section class="md:max-w-3xl mx-auto p-4 md:p-8">
+            <slot />
+        </section>
+    </body>
+</html>
