@@ -3,6 +3,10 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+::-webkit-scrollbar {
+	width: 0;
+}
+
 :root {
 	--font-sans: "IBM Plex Sans", sans-serif;
 	--font-mono: "IBM Plex Mono", monospace;
