@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css"
 import Meta from "../components/Meta.astro"
+import Header from "../components/Header"
+import Footer from "../components/Footer"
 
 interface Props {
 	title?: string
@@ -23,9 +25,11 @@ const { title, description, image, type, date } = Astro.props
 		<link rel="stylesheet" href="/src/styles/global.css" />
 		<Meta {title} {description} {type} {date} />
 	</head>
-	<body class="bg-white text-neutral-900 min-h-screen">
-		<section class="md:max-w-3xl mx-auto p-4 md:p-8">
+	<body class="bg-white text-neutral-900 min-h-screen flex flex-col">
+		<Header />
+		<section class="md:w-3xl mx-auto p-4 md:p-0 grow">
 			<slot />
 		</section>
+		<Footer />
 	</body>
 </html>
