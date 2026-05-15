@@ -23,6 +23,12 @@ const { title, description, image, type, date } = Astro.props
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link rel="stylesheet" href="/src/styles/global.css" />
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title="thoughts RSS feed"
+			href={new URL("/rss.xml", Astro.site)}
+		/>
 		<Meta {title} {description} {type} {date} />
 	</head>
 	<body class="bg-white text-neutral-900 min-h-screen flex flex-col">

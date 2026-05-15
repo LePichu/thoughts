@@ -12,6 +12,7 @@
 		"astro": "astro"
 	},
 	"dependencies": {
+		"@astrojs/rss": "^4.0.18",
 		"@astrojs/solid-js": "^6.0.1",
 		"@carbon/icon-helpers": "^10.75.0",
 		"@carbon/icons": "^11.80.0",
