@@ -47,9 +47,8 @@ export default function ThoughtsFeed(props: { thoughts: ThoughtMeta[] }) {
 	})
 
 	return (
-		<div class="font-serif">
-			{}
-			<div class="flex items-center gap-3 p-4 border border-neutral-300">
+		<div class="font-serif flex flex-col gap-4">
+			<div class="flex items-center gap-4 p-4 border border-neutral-300">
 				<CarbonIcon
 					icon={SearchIcon}
 					class="text-neutral-400 shrink-0 [&_svg]:w-5 [&_svg]:h-5 [&_svg]:fill-current"
@@ -76,22 +75,18 @@ export default function ThoughtsFeed(props: { thoughts: ThoughtMeta[] }) {
 				</Show>
 			</div>
 
-			{}
 			<Show when={query()}>
-				<p class="text-sm text-neutral-400 font-['IBM_Plex_Mono',monospace] mb-6">
+				<p class="text-sm text-neutral-400 font-mono">
 					{results().length} result{results().length !== 1 ? "s" : ""}{" "}
 					for "{query()}"
 				</p>
 			</Show>
 
-			<hr class="border-neutral-300 my-4" />
-
-			{}
-			<div class="flex flex-col divide-y divide-neutral-200 gap-2">
+			<div class="flex flex-col divide-y divide-neutral-200 gap-4">
 				<For
 					each={results()}
 					fallback={
-						<div class="py-12 text-center text-neutral-400 text-base">
+						<div class="p-8 text-center text-neutral-400 text-base w-full border border-neutral-300">
 							No thoughts match "{query()}"
 						</div>
 					}
